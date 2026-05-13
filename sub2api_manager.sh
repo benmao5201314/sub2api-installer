@@ -104,6 +104,7 @@ EOF
     print_success "安装完成！"
     echo -e "------------------------------------------"
     echo -e "公网访问: http://$PUBLIC_IP:$SUB2API_PORT"
+    echo -e "数据库名称: $PG_DB"
     echo -e "数据库用户: $PG_USER"
     echo -e "数据库密码: $PG_PASSWORD"
     echo -e "Redis 地址: localhost:6379 (无密码)"
