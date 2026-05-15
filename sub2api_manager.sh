@@ -17,7 +17,7 @@ PG_DB="sub2api_db"
 PG_PASSWORD=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 16)
 SUB2API_PORT="5002"
 INSTALL_DIR="/opt/sub2api"
-CONFIG_DIR="/etc/sub2api"
+CONFIG_DIR="/etc/etc/sub2api"
 SERVICE_USER="sub2api"
 
 # 打印 LOGO
@@ -43,6 +43,12 @@ check_root() {
 
 # 安装过程
 do_install() {
+    # 0. 选择端口
+    echo -e "${YELLOW}请输入 Sub2API 运行端口 (默认 5002):${NC}"
+    read -p "> " custom_port
+    SUB2API_PORT=${custom_port:-5002}
+    print_info "将使用端口: $SUB2API_PORT"
+
     print_info "开始安装 Sub2API 及其依赖..."
     
     # 1. 更新环境
